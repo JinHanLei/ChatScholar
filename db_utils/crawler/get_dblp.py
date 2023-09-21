@@ -10,8 +10,9 @@ import requests
 from bs4 import BeautifulSoup
 from tqdm.auto import tqdm
 from requests.adapters import HTTPAdapter
+from settings import PROXIES
 
-def get_url(url, use_proxy=True):
+def get_url(url):
     """
         访问url，返回网页内容
     """
@@ -41,8 +42,8 @@ def get_url(url, use_proxy=True):
     s = requests.Session()
     s.mount('http://', HTTPAdapter(max_retries=3))
     s.mount('https://', HTTPAdapter(max_retries=3))
-    if use_proxy:
-        proxies = {"http": "182.43.190.128:800"}
+    if PROXIES:
+        proxies = PROXIES
         r = s.get(url, headers=headers, proxies=proxies, timeout=60)
     else:
         r = s.get(url, headers=headers, timeout=60)
@@ -175,13 +176,12 @@ def get_publ(url, is_conf, flag=[]):
 
 
 if __name__ == '__main__':
-#     # url = "https://dblp.uni-trier.de/db/journals/tocs/"
-#     # url = "https://dblp.uni-trier.de/db/conf/aaai/"
-#     # url = "https://dblp.uni-trier.de/db/journals/ai/"
-#     # url = "https://dblp.uni-trier.de/db/conf/fse/"
+    # url = "https://dblp.uni-trier.de/db/journals/tocs/"
+    # url = "https://dblp.uni-trier.de/db/conf/aaai/"
+    # url = "https://dblp.uni-trier.de/db/journals/ai/"
+    # url = "https://dblp.uni-trier.de/db/conf/fse/"
     url = "https://dblp.uni-trier.de/db/conf/isca/index.html"
     res = get_conf(url, [])
     # res = get_jour(url, [])
-#
-#     # res = get_bib("Transparency, Detection and Imitation in Strategic ")
+    # res = get_bib("Transparency, Detection and Imitation in Strategic ")
     print(res)

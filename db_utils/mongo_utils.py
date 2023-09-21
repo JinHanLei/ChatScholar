@@ -8,7 +8,7 @@ import re
 
 import pymongo
 from typing import List, Dict
-from db_utils.sql_settings import MONGO_SERVER_IP, MONGO_SERVER_PORT
+from settings import MONGO_SERVER_IP, MONGO_SERVER_PORT
 
 
 class MongoClass:
@@ -79,5 +79,4 @@ class MongoHandler:
                     idx = sorted(range(len(counts)), key=lambda k: counts[k], reverse=True)
                     paper_of_publ_order = [paper_of_publ[i] for i in idx]
                 res.extend(paper_of_publ_order)
-
         return res

@@ -10,9 +10,10 @@ import shutil
 
 import requests
 import pandas as pd
-from app_utils.app_settings import *
 from app_utils.xunfei_request import SparkGPT
+from settings import API_IP, API_PORT
 
+API_PATH = f"http://{API_IP}:{API_PORT}/"
 
 def search_paper(begin_year, end_year, selected_publ, keywords, is_strict):
     assert keywords

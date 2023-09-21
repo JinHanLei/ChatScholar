@@ -3,4 +3,5 @@ pdf_utils
 test.py
 temp
 utils
-app_utils/config.json
+scripts
+settings.py

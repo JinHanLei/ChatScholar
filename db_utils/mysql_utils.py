@@ -5,11 +5,9 @@ Date    : 2023/9/13
 E-mail  : jin@smail.swufe.edu.cn
 """
 import re
-
 import pandas as pd
-
-from db_utils.sql_settings import *
 import pymysql
+from settings import *
 
 
 class MysqlClass:

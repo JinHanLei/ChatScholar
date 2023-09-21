@@ -13,8 +13,7 @@ import hmac
 import json
 import ssl
 import os
-
-from app_utils.app_settings import xunfei_config
+from settings import xunfei_config, appid, api_key, api_secret, domain, Spark_url
 
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 
@@ -109,11 +108,11 @@ class SparkGPT(object):
             self.conf_dict = json.load(f)
         # 下面为必要配置，如果从配置文件中获取不到的话，直接报错
         self.spark_info = self.conf_dict.get("spark_info")
-        self.app_id = self.spark_info['app_id']
-        self.api_key = self.spark_info['api_key']
-        self.api_secret = self.spark_info['api_secret']
-        self.domain = self.spark_info['domain']
-        self.Spark_url = self.spark_info['Spark_url']
+        self.app_id = appid
+        self.api_key = api_key
+        self.api_secret = api_secret
+        self.domain = domain
+        self.Spark_url = Spark_url
 
         # 下面是非必要配置，如果从配置文件中获取不到的话，则使用默认值
         self.temperature = float(self.spark_info.get('temperature', 0.5))

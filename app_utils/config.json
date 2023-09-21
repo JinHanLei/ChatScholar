@@ -1,10 +1,5 @@
 {
   "spark_info": {
-    "app_id": "xxxx",
-    "api_secret": "xxxxx",
-    "api_key": "xxxxxx",
-    "domain": "generalv2",
-    "Spark_url": "ws://spark-api.xf-yun.com/v2.1/chat",
     "prompt": "If you don't know just say that you don't know.",
     "prompt_special": "",
     "temperature": 0.5,

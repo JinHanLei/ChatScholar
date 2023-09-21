@@ -8,6 +8,7 @@ import json
 import flask
 from db_utils.crawler.get_dblp import get_bib
 from db_utils.mongo_utils import MongoHandler
+from settings import API_PORT
 
 app = flask.Flask(__name__)
 
@@ -60,4 +61,4 @@ def get_bib_api():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8002, debug=True)
+    app.run(host="0.0.0.0", port=API_PORT, debug=True)
