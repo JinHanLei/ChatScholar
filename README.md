@@ -79,6 +79,7 @@ gradio app.py
 ## TODO
 
 - [ ] 部分论文缺失，原因是一些期刊/会议的格式混乱，例如会议论文集发在某期刊上，需要设计爬虫和数据格式；
+- [ ] 部分期刊会议会增量更新论文，当前的url中的论文不完整，需要设计最近页面的更新爬虫；
 - [ ] 论文pdf读取和解析，预备参考[gpt_academic](https://github.com/binary-husky/chatgpt_academic)和[ChatPaper](https://github.com/kaixindelele/ChatPaper)；
 - [ ] 论文LLM训练；
 - [ ] 用户能储存固定的期刊会议集，以便下次快速查找；

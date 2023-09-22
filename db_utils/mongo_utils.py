@@ -66,17 +66,17 @@ class MongoHandler:
                     for title in titles["papers"]:
                         pattern = re.compile(keywords, re.I)
                         hits = re.findall(pattern, title)
-                        count = len(set(hits))
+                        count = len(set([i.lower() for i in hits]))
                         if count:
                             paper_of_publ.append({"publ": publ, "year": titles["year"], "title": title, "count": count})
                             counts.append(count)
                 except:
                     print(titles["papers"])
                 # 按关键字数量排序
-                if is_strict:
-                    paper_of_publ_order = [paper_of_publ[i] for i in range(len(counts)) if counts[i] == max_count]
-                else:
-                    idx = sorted(range(len(counts)), key=lambda k: counts[k], reverse=True)
-                    paper_of_publ_order = [paper_of_publ[i] for i in idx]
-                res.extend(paper_of_publ_order)
+            if is_strict:
+                paper_of_publ_order = [paper_of_publ[i] for i in range(len(counts)) if counts[i] == max_count]
+            else:
+                idx = sorted(range(len(counts)), key=lambda k: counts[k], reverse=True)
+                paper_of_publ_order = [paper_of_publ[i] for i in idx]
+            res.extend(paper_of_publ_order)
         return res
