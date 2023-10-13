@@ -8,6 +8,7 @@ import re
 from random import randint
 import requests
 from bs4 import BeautifulSoup
+from semanticscholar import SemanticScholar
 from tqdm.auto import tqdm
 from requests.adapters import HTTPAdapter
 from settings import PROXIES
@@ -119,13 +120,12 @@ def get_papers(venue_url):
 
 
 def get_bib(title):
-    paper_url = "https://dblp.uni-trier.de/search/publ/inc?q={}&h=30&f=0&s=ydvspc".format(title)
     try:
-        bib_url = get_url(paper_url).find('a', attrs={'rel': "nofollow"}).attrs['href']
-        bib = get_url(bib_url).find('div', attrs={'id': "bibtex-section"}).text.strip()
-        return bib
+        sch = SemanticScholar()
+        results = sch.search_paper(title, fields=['title', "citationStyles"], limit=1)
+        return results[0]["citationStyles"]["bibtex"]
     except:
-        return ""
+        return "后端算法出错，请联系管理员！"
 
 
 def get_jour(jour_mian_url, already_url):

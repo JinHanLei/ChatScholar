@@ -1,11 +1,13 @@
 # ChatScholar
-ChatScholar，一站式论文检索和生成平台。
+ChatScholar，一站式论文检索和导读平台。
+
+让天下没有难找和难读懂的论文！
 
 ## 关键技术点
 - 爬虫：基于requests和beautifulsoup，利用代理ip池爬取[DBLP](https://dblp.uni-trier.de/)论文信息，实现了增量更新（如果要爬的url已经存在数据库，则不爬）；
 - 数据库：Mysql存期刊会议和用户信息，MongoDB储存爬取的论文；
 - 后端接口：Flask调度算法；
-- LLM接口：暂时使用[讯飞星火](https://xinghuo.xfyun.cn/)；
+- LLM接口：本地部署ChatGLM；
 - 前端页面：Gradio（比较简陋，但是功能基本都能实现）。
 
 ## 项目简介
@@ -36,6 +38,8 @@ ChatScholar
 │   │   ├── get_dblp.py
 │   ├── mongo_utils.py
 │   ├── mysql_utils.py
+├── pdf_utils
+│   ├── pdf_reader.py
 ├── README.md
 ├── requirements.txt
 ├── temp
@@ -79,8 +83,8 @@ gradio app.py
 ## TODO
 
 - [ ] 部分论文缺失，原因是一些期刊/会议的格式混乱，例如会议论文集发在某期刊上，需要设计爬虫和数据格式；
-- [ ] 部分期刊会议会增量更新论文，当前的url中的论文不完整，需要设计最近页面的更新爬虫；
-- [ ] 论文pdf读取和解析，预备参考[gpt_academic](https://github.com/binary-husky/chatgpt_academic)和[ChatPaper](https://github.com/kaixindelele/ChatPaper)；
+- [ ] 部分期刊会议会在同一页面中增量更新论文，而本项目的更新逻辑在于跳过已有的页面不爬，所以爬虫需要更合理更新设计；
+- [x] 论文pdf读取和解析，预备参考[gpt_academic](https://github.com/binary-husky/chatgpt_academic)和[ChatPaper](https://github.com/kaixindelele/ChatPaper)；
 - [ ] 论文LLM训练；
 - [ ] 用户能储存固定的期刊会议集，以便下次快速查找；
 - [ ] 更美观实用的前端；

@@ -1,5 +1,6 @@
+.idea
 __pycache__
-pdf_utils
+pdf_utils/pdfs
 test.py
 temp
 utils

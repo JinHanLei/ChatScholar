@@ -30,3 +30,5 @@ domain = "generalv2"    # v2.0版本
 #云端环境的服务地址
 # Spark_url = "ws://spark-api.xf-yun.com/v1.1/chat"  # v1.5环境的地址
 Spark_url = "ws://spark-api.xf-yun.com/v2.1/chat"  # v2.0环境的地址
+
+CHATGLM_ADDRESS = "127.0.0.1:8800"
